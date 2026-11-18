@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hanging by Your Bootstraps</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <style>
+    body {
+      min-height: 100vh;
+      background-color: #eaeaea;
+      font-family: system-ui, sans-serif;
+    }
+
+    .lesson-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1rem;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .main-panel {
+      display: grid;
+      align-content: start;
+      justify-content: center;
+      overflow: auto;
+      padding-bottom: 3rem;
+    }
+
+    .instructions {
+      max-height: calc(100vh - 2rem);
+      margin-bottom: 1rem;
+      padding: 1.5rem;
+      overflow: auto;
+      border: 1px solid #ccc;
+      background-color: #fff;
+    }
+
+    .instructions li {
+      margin-bottom: 1rem;
+    }
+
+    .instructions img {
+      display: block;
+      width: min(100%, 271px);
+      margin: 0.5rem 0;
+    }
+
+    .task-heading {
+      margin: 1.5rem 0 0;
+      color: #333;
+      font-size: 1.25rem;
+    }
+
+    .task {
+      display: grid;
+      align-content: center;
+      width: 260px;
+      max-width: 100%;
+      margin: 0.5rem 0;
+      padding: 5px;
+      border: 3px dashed #666;
+    }
+
+    .grid-demo {
+      counter-reset: block;
+    }
+
+    .grid-demo > div {
+      display: grid;
+      align-content: center;
+      justify-content: center;
+      height: 50px;
+      counter-increment: block;
+      border: 3px solid #eaeaea;
+      background-color: #f1c38e;
+      color: #874f10;
+      font-family: sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .grid-demo > div::before {
+      content: counter(block);
+    }
+
+    @page {
+      size: letter portrait;
+      margin: 0.45in;
+    }
+
+    @media print {
+      body {
+        min-height: 0;
+        background-color: #fff;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .lesson-layout {
+        display: block;
+        min-height: 0;
+        padding: 0;
+      }
+
+      .main-panel {
+        display: block;
+        overflow: visible;
+        padding: 0;
+      }
+
+      .instructions {
+        max-height: none;
+        margin: 1rem 0 0;
+        padding: 1rem;
+        overflow: visible;
+      }
+
+      .instructions img {
+        display: none;
+      }
+
+      .instructions ol {
+        display: none;
+      }
+
+      .task-heading {
+        margin-top: 0.75rem;
+        font-size: 1rem;
+      }
+
+      .task,
+      .instructions li {
+        break-inside: avoid;
+      }
+
+      .submission-links {
+        margin-top: 1rem;
+        overflow-wrap: anywhere;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .lesson-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .instructions {
+        max-height: none;
+        margin-bottom: 0;
+      }
+
+      .main-panel {
+        overflow: visible;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="lesson-layout">
+    <main class="main-panel">
+      <h1 class="visually-hidden">Bootstrap exercises</h1>
+
+      <section>
+        <h2 class="task-heading">Task 1</h2>
+        <div class="task">
+          <button class="btn btn-primary w-100">Button 1</button>
+          <hr>
+          <button class="btn btn-outline-success w-100">Button 2</button>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="task-heading">Task 2</h2>
+        <div class="task pt-3">
+          <p class="alert alert-danger">Alert! Danger!</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="task-heading">Task 3</h2>
+        <div class="task pt-3">
+          <p class="bg-info text-white fw-bold">Information Desk</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="task-heading">Task 4</h2>
+        <div class="task">
+          <h1 class="display-1">Hello</h1>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="task-heading">Task 5</h2>
+        <div class="task">
+          <div class="container">
+            <div class="row grid-demo">
+              <div class="col-4"></div>
+              <div class="col-4"></div>
+              <div class="col-4"></div>
+              <div class="col-6"></div>
+              <div class="col-6"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="task-heading">Task 6</h2>
+        <div class="task">
+          <div class="container">
+            <div class="row grid-demo justify-content-center">
+              <div class="col-6"></div>
+              <div class="col-6"></div>
+              <div class="col-5"></div>
+              <div class="col-5"></div>
+              <div class="col-6"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="task-heading">Task 7</h2>
+        <div class="task">
+          <div class="container">
+            <div class="row grid-demo">
+              <div class="col-6"></div>
+              <div class="col-6 offset-3"></div>
+              <div class="col-6"></div>
+              <div class="col-6"></div>
+              <div class="col-6 offset-3"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="task-heading">Task 8</h2>
+        <div class="task">
+          <div class="container">
+            <div class="row grid-demo">
+              <div class="col-12 order-5"></div>
+              <div class="col-6 order-2"></div>
+              <div class="col-6 order-4"></div>
+              <div class="col-6 order-3"></div>
+              <div class="col-6 order-1"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="instructions" aria-labelledby="instructions-title">
+      <h2 id="instructions-title">Hanging by Your Bootstraps</h2>
+      <p>Use what you have learned about the Bootstrap framework to complete the following tasks.</p>
+      <p class="alert alert-info"><strong>Note:</strong> Many of us are using AI. Some teachers seem okay with it, while others are against it. I am not against using AI, but I want you to learn the material, so I think we need to use it wisely. It is convenient, but it has major flaws. We will see how this goes. I learned this in UX and prototyping.</p>
+      <footer class="submission-links">
+        <p>CodePen: <a href="https://codepen.io/mitchgeorgeoff-star/pen/ramaeaq">https://codepen.io/mitchgeorgeoff-star/pen/ramaeaq</a></p>
+        <p>GitHub: <a href="https://github.com/mitchgeorgeoff-star/Hanging-on-by-your-bootstraps">https://github.com/mitchgeorgeoff-star/Hanging-on-by-your-bootstraps</a></p>
+        <p>PDF: <a href="./Hanging-by-Your-Bootstraps.pdf">Hanging-by-Your-Bootstraps.pdf</a></p>
+      </footer>
+      <ol>
+        <li>
+          Style the buttons with Bootstrap classes.
+          <img src="https://imdac.github.io/images/codepen/bootstraps-1.png" alt="Task 1 reference: primary and outlined buttons" loading="lazy">
+        </li>
+        <li>
+          Style the alert box with Bootstrap classes.
+          <img src="https://imdac.github.io/images/codepen/bootstraps-2.png" alt="Task 2 reference: danger alert" loading="lazy">
+        </li>
+        <li>
+          Use Bootstrap text and color classes on the paragraph.
+          <img src="https://imdac.github.io/images/codepen/bootstraps-3.png" alt="Task 3 reference: white text on an info background" loading="lazy">
+        </li>
+        <li>
+          Use a Bootstrap heading class.
+          <img src="https://imdac.github.io/images/codepen/bootstraps-4.png" alt="Task 4 reference: oversized Hello heading" loading="lazy">
+        </li>
+        <li>
+          Create the grid layout with Bootstrap grid classes.
+          <img src="https://imdac.github.io/images/codepen/bootstraps-5.png" alt="Task 5 reference: three columns above two wider columns" loading="lazy">
+        </li>
+        <li>
+          Create the grid layout with Bootstrap grid classes.
+          <img src="https://imdac.github.io/images/codepen/bootstraps-6.png" alt="Task 6 reference: centered columns in three rows" loading="lazy">
+        </li>
+        <li>
+          Create the grid layout with Bootstrap grid classes.
+          <img src="https://imdac.github.io/images/codepen/bootstraps-7.png" alt="Task 7 reference: staggered and centered columns" loading="lazy">
+        </li>
+        <li>
+          Create the grid layout with Bootstrap grid classes.
+          <img src="https://imdac.github.io/images/codepen/bootstraps-8.png" alt="Task 8 reference: reordered columns with a full-width final row" loading="lazy">
+        </li>
+      </ol>
+    </aside>
+  </div>
+</body>
+</html>
